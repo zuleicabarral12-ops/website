@@ -1,4 +1,58 @@
----
+import flet as ft
+
+def main(page: ft.Page):
+    # 🎨 Configurações da Página
+    page.title = "Contador Simples com Flet"
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+    page.window_width = 400
+    page.window_height = 300
+    page.update()
+
+    # 🔢 Variável para o contador
+    txt_number = ft.TextField(value="0", text_align=ft.TextAlign.RIGHT, width=100)
+
+    # ⚙️ Funções de Manipulação
+    def minus_click(e):
+        """Diminui o valor do contador e atualiza a interface."""
+        txt_number.value = str(int(txt_number.value) - 1)
+        page.update()
+
+    def plus_click(e):
+        """Aumenta o valor do contador e atualiza a interface."""
+        txt_number.value = str(int(txt_number.value) + 1)
+        page.update()
+
+    # 🖼️ Elementos da Interface (UI)
+    page.add(
+        ft.Row(
+            [
+                # Botão de decremento
+                ft.IconButton(ft.icons.REMOVE, on_click=minus_click),
+                
+                # Campo de texto do contador
+                txt_number,
+                
+                # Botão de incremento
+                ft.IconButton(ft.icons.ADD, on_click=plus_click),
+            ],
+            alignment=ft.MainAxisAlignment.CENTER
+        )
+    )
+
+# 🚀 Inicia a Aplicação
+if __name__ == "__main__":
+    # Para rodar como aplicação de desktop e web
+    ft.app(target=main)
+    
+    # Para rodar como aplicação web no navegador (opcional, mas comum para testes)
+    # ft.app(target=main, view=ft.WEB_BROWSER) 
+3. Como Executar
+Execute o arquivo no seu terminal:
+
+Bash
+
+python main.py---
 title: Adaptive apps
 sidebar_label: Adaptive apps
 ---
